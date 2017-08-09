@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<title>Task Manager</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+<link href="css/lateralNav.css" rel="stylesheet">
+<link href="css/timeline.css" rel="stylesheet">
+<link href="css/tskPageContent.css" rel="stylesheet">
+
+<!-- jQuery -->
+<script src="./node_modules/jquery/dist/jquery.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar-inverse navbar-default sidebar" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <span class="brand visible-xs h2 text-center">TaskManager</span>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1"
+                    aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            </div>
+            <div class="navbar-collapse collapse" id="bs-sidebar-navbar-collapse-1" aria-expanded="false">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#"><span class="userName text-capitalize"></span><span class="pull-right showopacity glyphicon glyphicon-user"></span></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle actions" data-toggle="dropdown" aria-expanded="false">Actions <span class="glyphicon glyphicon-menu-down pull-right"></span></a>
+                        <ul class="dropdown-menu forAnimate menu-actions" role="menu">
+                            <li class="clear-all"><a>Limpar todas <span  class="pull-right showopacity glyphicon glyphicon-remove-circle"></span></a></li>
+                            <hr>
+                            <!-- <li class="clear-finished"><a>Limpar concluídas <span  class="pull-right showopacity glyphicon glyphicon-remove-circle"></span></a></li>
+                            <hr> -->
+                            <li class="finish-late"><a>Concluir atrasadas <span  class="pull-right showopacity glyphicon glyphicon-ok-circle"></span></a></li>
+                            <hr>
+                            <li class="finish-open"><a>Concluir abertas <span  class="pull-right showopacity glyphicon glyphicon-ok-circle"></span></a></li>
+                            <hr>
+                            <li class="logout"><a>Logout <span  class="pull-right showopacity glyphicon glyphicon-log-out"></span></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="dashboard.html"><span>Dashboards</span><span class="glyphicon glyphicon-dashboard pull-right"></span></a></li>
+
+                    <!-- <li><a href="#">Tags<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li> -->
+                </ul>
+            </div>
+        </div>
+        <span class="h4 text-center hidden-xs nav-brand">TaskManager</span>
+    </nav>
+
+    <section class="content col-xs-12 col-sm-8 col-md-9 col-lg-10">
+        <header class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p class="h2">Olá <span class="userName text-capitalize"></span>!</p>
+            <p class="h3">Crie, edite ou acompanhe suas tarefas.</p>
+            <hr />
+        </header>
+        <div id="main" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="form-wrapper">
+                <form id="create-task-form" role="form" action="javascript:createTask();">
+                    <div class="form-group float-label-control col-md-6 col-lg-6">
+                        <label for="tskTitulo">Título</label>
+                        <input required id="tskTitulo" type="text" class="form-control" placeholder="Título">
+                    </div>
+                    <div class="form-group float-label-control col-md-6 col-lg-6">
+                        <label for="tskDataEsperada">Data e hora esperada para conclusão</label>
+                        <input required id="tskDataEsperada" type="datetime-local" class="form-control">
+                    </div>
+                    <div class="form-group float-label-control col-md-12 col-lg-12">
+                        <label for="tskDescricao">Descrição</label>
+                        <textarea id="tskDescricao" class="form-control" placeholder="Descrição" rows="3"></textarea>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <!-- <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Ordenar <span class="caret"></span>
+                        </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Data de criação</a></li>
+                                <li><a href="#">Data de conclusão</a></li>
+                            </ul>
+                        </div> -->
+                    </div>
+                    <div class=" col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <button type="submit" class="btn btn-block btn-success pull-right">Criar</button>
+                    </div>
+                    <hr />
+                </form>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <p class="h3">Atrasadas</p>
+                <hr>
+                <div id="tskAtrasadas">
+                    <div class="qa-message-list" id="wallmessagesAtrasadas">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <p class="h3">Em aberto</p>
+                <hr>
+                <div id="tskAbertas">
+
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <p class="h3">Concluídas</p>
+                <hr>
+                <div id="tskConcluidas">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL CLEAR TASK -->
+    <div class="modal fade" id="clear-task-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" data-dismiss="modal" class="close closing-button">
+                        <span>&times;</span>
+                    </button>
+                    <p class="h3">Você tem certeza que deseja excluir todas as tarefas?</p>
+                </div>
+                <div class="modal-body">
+                    <p class="h4">Essa ação será irreversível</p>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default closing-button" data-dismiss="modal" id="btn-sub">Cancelar</button>
+                    <button type="button" class="btn btn-primary closing-button" data-dismiss="modal" id="btn-confirm">Apagar</button>
+                </div>
+
+            </div>
+            <!-- end modal-content-->
+        </div>
+        <!-- end modal-dialog-->
+    </div>
+    <!-- END MODAL CLEAR TASK -->
+
+
+    <!-- MODAL EDIT TASK -->
+    <div class="modal fade" id="edit-task-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" data-dismiss="modal" class="close closing-button">
+                        <span>&times;</span>
+                    </button>
+                    <h3>Edite a tarefa</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-task-form" role="form">
+                        <div class="form-group float-label-control col-md-6 col-lg-6">
+                            <label for="tskTituloEdit">Título</label>
+                            <input required id="tskTituloEdit" type="text" class="form-control" placeholder="Título">
+                        </div>
+                        <div class="form-group float-label-control col-md-6 col-lg-6">
+                            <label for="tskDataEsperadaEdit">Data e hora esperada para conclusão</label>
+                            <input required id="tskDataEsperadaEdit" type="datetime-local" class="form-control">
+                        </div>
+                        <div class="form-group float-label-control col-md-12 col-lg-12">
+                            <label for="tskDescricaoEdit">Descrição</label>
+                            <textarea id="tskDescricaoEdit" class="form-control" placeholder="Descrição" rows="3"></textarea>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger closing-button" data-dismiss="modal" id="btn-sub">Cancelar</button>
+                            <input type="submit" class="btn btn-success pull-right" value="Confirmar Edição"></input>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+            <!-- end modal-content-->
+        </div>
+        <!-- end modal-dialog-->
+    </div>
+    <!-- END MODAL EDIT TASK -->
+
+
+    <!-- MODAL REDIRECT LOGIN -->
+    <div class="modal fade" id="login-required-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" data-dismiss="modal" class="close closing-button">
+                        <span>&times;</span>
+                    </button>
+                    <h3>Você não está logado</h3>
+                </div>
+                <div class="modal-body">
+                    <p>Este é um ambiente restrito e você precisa estar logado para acessar.
+                        <br><br> Por favor, faça login.</p>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary closing-button" data-dismiss="modal" id="btn-sub">Ok</button>
+                </div>
+            </div>
+            <!-- end modal-content-->
+        </div>
+        <!-- end modal-dialog-->
+    </div>
+    <!-- END MODAL REDIRECT LOGIN-->
+
+    <script src="./js/user-handler.js"></script>
+    <script src="./js/create-task.js"></script>
+    <script src="./js/task-to-html.js"></script>
+    <script src="./js/task-handler.js"></script>
+    <script src="./js/actions.js"></script>
+
+</body>
+
+</html>

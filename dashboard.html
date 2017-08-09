@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<title>Task Manager</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+<link href="css/lateralNav.css" rel="stylesheet">
+<link href="css/timeline.css" rel="stylesheet">
+<link href="css/tskPageContent.css" rel="stylesheet">
+
+<!-- jQuery -->
+<script src="./node_modules/jquery/dist/jquery.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar-inverse navbar-default sidebar" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <span class="brand visible-xs h2 text-center">TaskManager</span>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1"
+                    aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            </div>
+            <div class="navbar-collapse collapse" id="bs-sidebar-navbar-collapse-1" aria-expanded="false">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="tasks.html"><span class="userName text-capitalize"></span><span class="pull-right showopacity glyphicon glyphicon-user"></span></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle actions" data-toggle="dropdown" aria-expanded="false">Actions <span class="glyphicon glyphicon-menu-down pull-right"></span></a>
+                        <ul class="dropdown-menu forAnimate menu-actions" role="menu">
+                            <li class="clear-all"><a>Limpar todas <span  class="pull-right showopacity glyphicon glyphicon-remove-circle"></span></a></li>
+                            <hr>
+                            <!-- <li class="clear-finished"><a>Limpar concluídas <span  class="pull-right showopacity glyphicon glyphicon-remove-circle"></span></a></li>
+                            <hr> -->
+                            <li class="finish-late"><a>Concluir atrasadas <span  class="pull-right showopacity glyphicon glyphicon-ok-circle"></span></a></li>
+                            <hr>
+                            <li class="finish-open"><a>Concluir abertas <span  class="pull-right showopacity glyphicon glyphicon-ok-circle"></span></a></li>
+                            <hr>
+                            <li class="logout"><a>Logout <span  class="pull-right showopacity glyphicon glyphicon-log-out"></span></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="dashboard.html"><span>Dashboards</span><span class="glyphicon glyphicon-dashboard pull-right"></span></a></li>
+
+                    <!-- <li><a href="#">Tags<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li> -->
+                </ul>
+            </div>
+        </div>
+        <span class="h4 text-center hidden-xs nav-brand">TaskManager</span>
+    </nav>
+
+        <!-- MODAL REDIRECT LOGIN -->
+    <div class="modal fade" id="login-required-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" data-dismiss="modal" class="close closing-button">
+                        <span>&times;</span>
+                    </button>
+                    <h3>Você não está logado</h3>
+                </div>
+                <div class="modal-body">
+                    <p>Este é um ambiente restrito e você precisa estar logado para acessar.
+                        <br><br> Por favor, faça login.</p>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary closing-button" data-dismiss="modal" id="btn-sub">Ok</button>
+                </div>
+            </div>
+            <!-- end modal-content-->
+        </div>
+        <!-- end modal-dialog-->
+    </div>
+    <!-- END MODAL REDIRECT LOGIN-->
+
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <canvas id="task-status-chart" width="400" height="400"></canvas>
+    </div>
+
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
+    <script src="./js/dash.js"></script>
+    <script src="./js/user-handler.js"></script>
+</body>
+
+</html>
