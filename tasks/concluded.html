@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<title>Task Manager - Concluídas</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="../css/tskPageContent.css" rel="stylesheet">
+<link href="../css/lateralNav.css" rel="stylesheet">
+
+<!-- jQuery -->
+
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-default sidebar" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1"
+                    aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            </div>
+            <div class="navbar-collapse collapse" id="bs-sidebar-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
+                <ul class="nav navbar-nav">
+                    <li><a href="../tasks.html">Olá, <span class="userName"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
+                    <li><a href="./all.html">Todas as tarefas<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-list"></span></a></li>
+                    <li class="dropdown open">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Detalhamento <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-search"></span></a>
+                        <ul class="dropdown-menu forAnimate" role="menu" class="active">
+                            <li><a href="./open.html">Abertas<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-thumbs-up"></span></a></li>
+                            <li class="divider"></li>
+                            <li><a href="./late.html">Atrasadas<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-warning-sign"></span></a></li>
+                            <li class="divider"></li>
+                            <li class="active"><a href="./concluded.html">Concluídas<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-ok"></span></a></li>
+                            <li class="divider"></li>
+                            <li><a href="./trash.html">Lixeira<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-trash"></span></a></li>
+                        </ul>
+                    </li>
+                    <!-- <li><a href="#">Tags<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script src="../js/tasksPages/createTask.js"></script>
+    <script src="../js/tasksPages/userHandler.js"></script>
+
+</body>
+
+</html>

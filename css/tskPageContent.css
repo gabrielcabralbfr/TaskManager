@@ -1,0 +1,33 @@
+html, body {
+    background-color: #f8f8f8;
+    min-height: 100%;
+    overflow: auto;
+}
+
+section.content {
+    padding: 0px;
+}
+
+header, #main {
+    background-color: #f8f8f8;
+}
+
+.glyphicon {
+    margin: 5px;
+    cursor: pointer;
+}
+
+.glyphicon:hover {
+    font-weight: bolder;
+}
+
+.glyphicon-user {
+    color: #fff;
+}
+
+.nav-brand {
+    position: absolute;
+    bottom: 20px;
+    color: #fff;
+    margin: 25px;
+}
