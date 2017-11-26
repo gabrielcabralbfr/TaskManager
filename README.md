@@ -6,7 +6,7 @@ Web Application to manage tasks. Academic project.
 - Create, edit, finish and remove Tasks
 - Dashboard module
 
-## Build with
+## Built with
 ```
 - HTML5
 - CSS/Bootstrap
