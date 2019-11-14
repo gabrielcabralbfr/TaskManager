@@ -1,22 +1,13 @@
-# TaskManager
-Web Application to manage tasks. Academic project.
+## 1 - Dependencies
+    - NPM
+    - Live-Server npm package
 
-## Functionalities
-- LocalStorage Authentication
-- Create, edit, finish and remove Tasks
-- Dashboard module
+## 2 - Running the application
+```npm install -g live-server```
 
-## Built with
-```
-- HTML5
-- CSS/Bootstrap
-- JS/JQuery
-```
+After installed live-server library, run the following: 
 
-## Home Page
+```npm start```
 
-![home-example](https://user-images.githubusercontent.com/25314438/29104424-b9bf0b66-7c9b-11e7-85d3-5bc7d7eadff8.jpg)
-
-## Dashboard module
-
-![dashboard-module](https://user-images.githubusercontent.com/25314438/29104423-b9bece76-7c9b-11e7-85cc-2e8fcaa4829f.JPG)
+## 3 - Getting started
+- After installed dependencies and runned the application, access http://localhost:8080 to get started
